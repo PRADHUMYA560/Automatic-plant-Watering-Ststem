@@ -1,0 +1,37 @@
+int analogPin = A0;
+int moisture;
+int percentage;
+
+int map_low = 1023;
+int map_high = 0;
+
+
+
+void setup() {
+  Serial.begin(9600);
+  pinMode (13,OUTPUT);
+}
+
+void loop() {
+
+ moisture = analogRead(analogPin);
+
+  percentage = map(moisture, map_low, map_high, 0, 100);
+
+  Serial.print(percentage);
+
+  Serial.println("%");
+  
+    if(percentage<35)
+  {
+    digitalWrite(13,LOW);
+  }
+  else
+  {
+    digitalWrite(13,HIGH);
+  }
+  delay(1000); 
+
+  delay(1000);
+  
+}
